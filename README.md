@@ -3,7 +3,7 @@
 This will help convert number to its alphabetical equivalent form.
 
 Example:
-```
+```javascript
 const { SpellOut } = require("spell-out");
 
 SpellOut(12345678); // -- One Crore Twenty Three Lakh Fourty Five Thousand Six Hundred Seventy Eight
