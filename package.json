@@ -1,0 +1,22 @@
+{
+  "name": "spell-out",
+  "version": "0.0.1",
+  "description": "",
+  "main": "SpellOut.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\""
+  },
+  "keywords": [
+    "Number",
+    "to",
+    "Words",
+    "Spell",
+    "Out"
+  ],
+  "repository": {
+    "url": "git+https://github.com/mujib2953/SpellOut",
+    "type": "git"
+  },
+  "author": "Mujib Ansari",
+  "license": "MIT"
+}
