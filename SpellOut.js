@@ -1,5 +1,10 @@
 const SpellOut = function(amount) {
 
+    if (typeof amount !== "number") {
+        const errorMessage = "Input Error: " + amount + " is not a number.";
+        throw new Error(errorMessage);
+    }
+
     const repo = {
         1: "One",
         2: "Two",
@@ -50,7 +55,9 @@ const SpellOut = function(amount) {
         const smallerDigit = Number(numberArray[1]);
         const graterDigit = Number(numberArray[0]);
 
-        return `${repo[graterDigit * 10]} ${repo[smallerDigit]}`;
+        return (smallerDigit !== 0) ? 
+            `${repo[graterDigit * 10]} ${repo[smallerDigit]}` :
+            `${repo[graterDigit * 10]}`;
     }
 
     let displayText = "";
@@ -69,4 +76,4 @@ const SpellOut = function(amount) {
     return displayText;
 };
 
-export { SpellOut };
+module.exports = { SpellOut };
