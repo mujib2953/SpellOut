@@ -15,4 +15,5 @@ TODOs:
 - [ ] USD output format
 - [ ] Support for larger number till Number.MAX_SAFE_INTEGER
 
-
+# App
+Author: Mujibur Rehman
