@@ -85,8 +85,14 @@ const SpellOut = function(amount) {
     while(amount !== 0) {
         const modulusFactor = (iterationCount === 1) ? 10 : 100;
         const doubleDigit = amount % modulusFactor;
+        const inWords = getAlphaNumber(doubleDigit);
 
-        displayText = `${getAlphaNumber(doubleDigit)} ${pos[iterationCount] ? pos[iterationCount] : ""} ${displayText}`;
+        if (doubleDigit !== 0) {
+            displayText = `${inWords} ${pos[iterationCount] ? pos[iterationCount] : ""} ${displayText}`;
+        } else {
+            displayText = `${displayText}`;
+        }
+        
         amount = parseInt(amount/modulusFactor);
 
         iterationCount++;
