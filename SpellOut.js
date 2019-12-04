@@ -1,3 +1,17 @@
+/*
+* Author: Mujibur Rehman (adna_coder)
+* email: ansarimujiburrehman@gmail.com
+* version: 0.3
+* created date: 28-Nov-2019
+* updated date: 02-Dec-2019
+*/
+
+/*
+* This will convert the number to its equivalent alphabetical form
+* @param amount (number)
+* @param format (string) possible values { "IS", "IIS" } default "IS"
+* @return displayText (String)
+*/
 const SpellOut = function(amount) {
 
     if (typeof amount !== "number") {
@@ -6,6 +20,7 @@ const SpellOut = function(amount) {
     }
 
     const repo = {
+        0: "Zero",
         1: "One",
         2: "Two",
         3: "Three",
@@ -58,6 +73,10 @@ const SpellOut = function(amount) {
         return (smallerDigit !== 0) ? 
             `${repo[graterDigit * 10]} ${repo[smallerDigit]}` :
             `${repo[graterDigit * 10]}`;
+    }
+
+    if (amount === 0) {
+        return repo[amount];
     }
 
     let displayText = "";
