@@ -15,5 +15,9 @@ TODOs:
 - [ ] USD output format
 - [ ] Support for larger number till Number.MAX_SAFE_INTEGER
 
+### Bugs
+- [External Bugs](https://github.com/mujib2953/SpellOut/issues) raised by other github user.
+- [Internal Bugs](https://github.com/mujib2953/SpellOut/blob/master/bugList.md) found in internal testing.
+
 # App
 Author: Mujibur Rehman
