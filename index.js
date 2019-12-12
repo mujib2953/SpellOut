@@ -1,8 +1,6 @@
 // import { SpellOut } from "./SpellOut.js";
 const { SpellOut } = require("./SpellOut.js");
-let text = 0;
-
-let sampledata = [
+const sampledata = [
     "0",
     "12",
     "32645732",
@@ -10,9 +8,9 @@ let sampledata = [
     "111111",
     "76435730",
     "121212123",
+    // "a"
 ];
 
 sampledata.forEach((s) => {
-    console.log(`${s} => ${SpellOut(Number(s))}`);
-    console.log(`${s} => ${SpellOut(Number(s), "IIS")}`);
+    console.log(`${s} => ${SpellOut(s)}`);
 });

@@ -12,10 +12,12 @@
 * @param format (string) possible values { "IS", "IIS" } default "IS"
 * @return displayText (String)
 */
-const SpellOut = function(amount) {
+const SpellOut = function(input) {
 
-    if (typeof amount !== "number") {
-        const errorMessage = "Input Error: " + amount + " is not a number.";
+    let amount = Number(input);
+
+    if (Number.isNaN(amount)) {
+        const errorMessage = "Input Error: " + input + " is not a number.";
         throw new Error(errorMessage);
     }
 

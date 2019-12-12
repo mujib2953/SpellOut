@@ -7,6 +7,10 @@ Example:
 const { SpellOut } = require("spell-out");
 
 SpellOut(12345678); // -- One Crore Twenty Three Lakh Fourty Five Thousand Six Hundred Seventy Eight
+
+OR 
+
+SpellOut("12345678"); // -- One Crore Twenty Three Lakh Fourty Five Thousand Six Hundred Seventy Eight
 ```
 
 Currently supported output format is INR.
