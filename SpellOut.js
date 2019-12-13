@@ -21,7 +21,7 @@ const SpellOut = function(input) {
         throw new Error(errorMessage);
     }
 
-    const repo = {
+    const wordsRepo = {
         0: "Zero",
         1: "One",
         2: "Two",
@@ -65,7 +65,7 @@ const SpellOut = function(input) {
     const getAlphaNumber = (number) => {
 
         if (number <= 20) {
-            return repo[number];
+            return wordsRepo[number];
         }
 
         const numberArray = number.toString().split("");
@@ -73,12 +73,12 @@ const SpellOut = function(input) {
         const graterDigit = Number(numberArray[0]);
 
         return (smallerDigit !== 0) ? 
-            `${repo[graterDigit * 10]} ${repo[smallerDigit]}` :
-            `${repo[graterDigit * 10]}`;
+            `${wordsRepo[graterDigit * 10]} ${wordsRepo[smallerDigit]}` :
+            `${wordsRepo[graterDigit * 10]}`;
     }
 
     if (amount === 0) {
-        return repo[amount];
+        return wordsRepo[amount];
     }
 
     let displayText = "";
