@@ -100,7 +100,7 @@ const SpellOut = function(input) {
         iterationCount++;
     }
 
-    return displayText;
+    return displayText.trim();
 };
 
 module.exports = { SpellOut };

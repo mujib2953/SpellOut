@@ -12,5 +12,5 @@ const sampledata = [
 ];
 
 sampledata.forEach((s) => {
-    console.log(`${s} => ${SpellOut(s)}`);
+    console.log(`${s} => "${SpellOut(s)}"`);
 });
