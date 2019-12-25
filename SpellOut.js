@@ -3,16 +3,19 @@
 * email: ansarimujiburrehman@gmail.com
 * version: 0.3
 * created date: 28-Nov-2019
-* updated date: 02-Dec-2019
+* updated date: 24-Dec-2019
 */
 
 /*
 * This will convert the number to its equivalent alphabetical form
 * @param amount (number)
-* @param format (string) possible values { "IS", "IIS" } default "IS"
+* @param format (string) possible values { "I", "U" } default "I"
 * @return displayText (String)
 */
-const SpellOut = function(input) {
+const INDIAN_FORMAT = "I";
+const INTERNATIONAL_FORMAT = "U";
+
+const SpellOut = function(input, format = INDIAN_FORMAT) {
 
     let amount = Number(input);
 
@@ -52,9 +55,10 @@ const SpellOut = function(input) {
         70: "Seventy",
         80: "Eighty",
         90: "Ninety"
-    }
+    };
 
-    const pos = ["", "Hundred", "Thousand", "Lakh", "Crore", "Arab", "Kharab"];
+    const indianPlaces = ["", "Hundred", "Thousand", "Lacs", "Crore", "Arab", "Kharab"];
+    const intlPlaces = ["", "Thousand", "Million", "Billion", "Trillion", "Quadrillion"];
 
     /* 
     * This will return the number in alphabet
@@ -69,13 +73,27 @@ const SpellOut = function(input) {
         }
 
         const numberArray = number.toString().split("");
-        const smallerDigit = Number(numberArray[1]);
-        const graterDigit = Number(numberArray[0]);
+        if (numberArray.length === 2) {
+            const smallerDigit = Number(numberArray[1]);
+            const graterDigit = Number(numberArray[0]);
 
-        return (smallerDigit !== 0) ? 
-            `${wordsRepo[graterDigit * 10]} ${wordsRepo[smallerDigit]}` :
-            `${wordsRepo[graterDigit * 10]}`;
-    }
+            return (smallerDigit !== 0) ?
+                `${wordsRepo[graterDigit * 10]} ${wordsRepo[smallerDigit]}` :
+                `${wordsRepo[graterDigit * 10]}`;
+        } else {
+            const smallerDigit = Number(numberArray[2]);
+            const middleDigit = Number(numberArray[1]);
+            const graterDigit = Number(numberArray[0]);
+
+            // --- smallest 0 --- 120
+            if (smallerDigit === 0) {
+                return `${wordsRepo[graterDigit]} Hundred and ${wordsRepo[middleDigit * 10]}`
+            } else {
+                const twoDigitNumber = getAlphaNumber((middleDigit * 10) + smallerDigit );
+                return `${wordsRepo[graterDigit]} Hundred and ${twoDigitNumber}`;
+            }
+        }
+    };
 
     if (amount === 0) {
         return wordsRepo[amount];
@@ -85,18 +103,19 @@ const SpellOut = function(input) {
     let iterationCount = 0;
 
     while(amount !== 0) {
-        const modulusFactor = (iterationCount === 1) ? 10 : 100;
+        const modulusFactor = (format === INTERNATIONAL_FORMAT) ? 1000 : (iterationCount === 1) ? 10 : 100;
         const doubleDigit = amount % modulusFactor;
         const inWords = getAlphaNumber(doubleDigit);
 
         if (doubleDigit !== 0) {
-            displayText = `${inWords} ${pos[iterationCount] ? pos[iterationCount] : ""} ${displayText}`;
+            const displayValue = (format === INTERNATIONAL_FORMAT) ? intlPlaces[iterationCount] : indianPlaces[iterationCount];
+
+            displayText = `${inWords} ${displayValue ? displayValue : ""} ${displayText}`;
         } else {
             displayText = `${displayText}`;
         }
         
         amount = parseInt(amount/modulusFactor);
-
         iterationCount++;
     }
 
