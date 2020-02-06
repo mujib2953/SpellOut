@@ -8,10 +8,12 @@ const sampledata = [
     // "111111",
     // "76435730",
     // "121212123",
-    "12345678"
+    // "12345678"
     // "a"
+    "12, 23, 456"
 ];
 
 sampledata.forEach((s) => {
     console.log(`${s} => "${SpellOut(s, "U")}"`);
+    console.log(`${s} => "${SpellOut(s, "I")}"`);
 });
