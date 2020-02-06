@@ -23,7 +23,9 @@ SpellOut("12345678", "U"); // --- Twelve Million Three Hundred and Forty Five Th
 
 TODOs:
 - [x] USD output format _(This is completed planned in next released)_
-- [ ] Support for comma seperated numbers, like **12,345,678** or **1,23,45,678**
+- [x] Support for comma seperated numbers, like **12,345,678** or **1,23,45,678** (Will be released in the next release.)
+- [ ] Instead of second argument as number, will ask an object. So that we can have multiple options in an object. Currently we are asking for `format`
+- [ ] Add support for languages.
 - [ ] Support for larger number till `Number.MAX_SAFE_INTEGER`
 
 ### Bugs
