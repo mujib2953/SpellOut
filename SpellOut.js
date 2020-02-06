@@ -14,11 +14,16 @@
 */
 const { separateNumber } = require("./utils/index.js");
 
-const INDIAN_FORMAT = "I";
-const INTERNATIONAL_FORMAT = "U";
 const SUPPORTED_SEPARATER = [",", " "];
 
-const SpellOut = function(input, format = INDIAN_FORMAT) {
+/*
+options = {
+    isIndianFormat: true/false,
+    lang: "en"/"jp"/"ch"/"ar"
+}
+*/
+
+const SpellOut = function(input, options) {
 
     /**
      * Application currentlt have support for "," (Comma) and " " (Space) as Separator
@@ -113,12 +118,12 @@ const SpellOut = function(input, format = INDIAN_FORMAT) {
     let iterationCount = 0;
 
     while(amount !== 0) {
-        const modulusFactor = (format === INTERNATIONAL_FORMAT) ? 1000 : (iterationCount === 1) ? 10 : 100;
+        const modulusFactor = (options && !options.isIndianFormat) ? 1000 : (iterationCount === 1) ? 10 : 100;
         const doubleDigit = amount % modulusFactor;
         const inWords = getAlphaNumber(doubleDigit);
 
         if (doubleDigit !== 0) {
-            const displayValue = (format === INTERNATIONAL_FORMAT) ? intlPlaces[iterationCount] : indianPlaces[iterationCount];
+            const displayValue = (options && !options.isIndianFormat) ? intlPlaces[iterationCount] : indianPlaces[iterationCount];
 
             displayText = `${inWords} ${displayValue ? displayValue : ""} ${displayText}`;
         } else {

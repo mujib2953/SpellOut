@@ -14,6 +14,6 @@ const sampledata = [
 ];
 
 sampledata.forEach((s) => {
-    console.log(`${s} => "${SpellOut(s, "U")}"`);
-    console.log(`${s} => "${SpellOut(s, "I")}"`);
+    console.log(`${s} => "${SpellOut(s, { isIndianFormat: true })}"`);
+    console.log(`${s} => "${SpellOut(s, { isIndianFormat: false })}"`);
 });
