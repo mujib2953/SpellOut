@@ -12,10 +12,20 @@
 * @param format (string) possible values { "I", "U" } default "I"
 * @return displayText (String)
 */
+const { separateNumber } = require("./utils/index.js");
+
 const INDIAN_FORMAT = "I";
 const INTERNATIONAL_FORMAT = "U";
+const SUPPORTED_SEPARATER = [",", " "];
 
 const SpellOut = function(input, format = INDIAN_FORMAT) {
+
+    /**
+     * Application currentlt have support for "," (Comma) and " " (Space) as Separator
+     * Like 123 456 789 or 12,34,56,789 or 12, 34, 56, 789
+     *
+    */
+    input = separateNumber(input, SUPPORTED_SEPARATER);
 
     let amount = Number(input);
 
